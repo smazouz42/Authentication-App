@@ -1,8 +1,10 @@
 import React from 'react'
-
-function AuthLayout({children}) {
+interface AuthLayoutProps {
+    children: React.ReactNode
+}
+function AuthLayout({children}: AuthLayoutProps) {
   return (
-    <div>
+    <div className='bg-slate-200 p-10 rounder-md'>
         {children}
     </div>
   )

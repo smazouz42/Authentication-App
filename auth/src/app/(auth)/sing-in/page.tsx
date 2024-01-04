@@ -1,8 +1,11 @@
 import React from 'react'
+import SingInForm from '@/components/form/SignInFrom'
 
 export const page = () => {
   return (
-    <div>Sing in</div>
+    <div>
+      <SingInForm/>
+    </div>
   )
 }
 export default page
