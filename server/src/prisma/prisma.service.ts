@@ -13,10 +13,12 @@ export class PrismaService extends PrismaClient
             },
         });
     }
-    async OnModuleInit() {
+
+    async onModuleInit() {
         await this.$connect();
     }
-    async OnModuleDestroy() {
-        this.$disconnect();
+
+    async onModuleDestroy() {
+        await this.$disconnect();
     }
 }
