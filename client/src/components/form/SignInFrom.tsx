@@ -5,6 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Link from "next/link";
+import axios from 'axios'
+
+
 
 
 import {
@@ -26,9 +29,21 @@ const FormSchema = z.object({
     .regex(/[a-z]/, "Password must contain at least one lowercase letter")
     .regex(/[0-9]/, "Password must contain at least one digit")
 })
-const onSubmit = (values:z.infer<typeof FormSchema>) => {
+const onSubmit = async (values: z.infer<typeof FormSchema>) => {
     console.log(values);
-}
+    try {
+        
+      const response = await axios.post('http://localhost:4000/auth/signin', {
+        email: values.email,
+        password: values.password
+      });
+      console.log(response.data);
+      // Perform any actions based on the response from the server
+    } catch (error) {
+      console.error(error);
+      // Handle the error
+    }
+  };
 const SingInForm = () => {
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
