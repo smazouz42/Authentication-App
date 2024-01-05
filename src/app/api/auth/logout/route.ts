@@ -10,7 +10,7 @@ export const POST = async (request: NextRequest) => {
     return NextResponse.redirect(new URL("/sign-in", request.nextUrl));
   }
   // make sure to invalidate the current session!
-  await auth.invalidateSession(session.sessionId);
+  await auth.invalidateAllUserSessions(session.userId);
 
   // delete session cookie
   authRequest.setSession(null);
